@@ -12,7 +12,7 @@ def get_book_data(book_url: str) -> dict:
     Returns: Словарь {
         title: Название книги
         price: Стоимость книги
-        raiting: Рейтинг книги
+        rating: Рейтинг книги
         count_available: Количество в наличии
         description: Описание
         upc: 
@@ -66,6 +66,10 @@ def get_book_data(book_url: str) -> dict:
     return res_dict
     # КОНЕЦ ВАШЕГО РЕШЕНИЯ
 
+book_url = 'http://books.toscrape.com/catalogue/a-light-in-the-attic_1000/index.html'
+print(get_book_data(book_url))
+
+
 def scrape_books(is_save=True):
     """
     Функция для получения данных по всем книгам и записи их 
@@ -76,7 +80,6 @@ def scrape_books(is_save=True):
     Returns:
     Возвращает список из словарей с данными по каждой книге
     """
-
     # НАЧАЛО ВАШЕГО РЕШЕНИЯ
     list_book = []
     base_url ="http://books.toscrape.com/catalogue/"
@@ -109,7 +112,17 @@ def scrape_books(is_save=True):
     # КОНЕЦ ВАШЕГО РЕШЕНИЯ
 
 
-res = scrape_books(is_save=True) # Допишите ваши аргументы
-print(type(res), len(res)) # и проверки
+# res = scrape_books(is_save=True) # Допишите ваши аргументы
+# print(type(res), len(res)) # и проверки
 
 
+
+if __name__ == "__main__":
+    # Запуск скрипта по расписанию на консультации договорились не вставлять
+    # schedule.every().day().at("19:35").do(scrape_books)
+    # while True:
+    #     schedule.run_pending()
+    #     time.sleep(1) 
+    scrape_books()
+
+    
